@@ -1,19 +1,51 @@
-import playlist from "./playlist.json";
-import { mapCursorToMax } from "map-cursor-to-max";
+import { configure } from "queryparams";
+
+const { params: PARAMS } = configure({
+  id: "49ee7cb3-a05a-463b-9ebb-5c1b59787d1b",
+  interval: 10000,
+});
 
 const FRAME = <HTMLIFrameElement>document.getElementById("frame");
-const STATE = { cursor: -1 };
+const ENDPOINT = `https://atlas.auspic.es/graph/${PARAMS.id}`;
+const QUERY = `{
+  mistral: object {
+    ... on Collection {
+      content: sample(amount: 1) {
+        link: entity {
+          ... on Link {
+            name
+            url
+          }
+        }
+      }
+    }
+  }
+}`;
 
-const init = () => {
-  STATE.cursor++;
+const request = () =>
+  fetch(ENDPOINT, {
+    method: "POST",
+    body: JSON.stringify({ query: QUERY }),
+    headers: { "Content-Type": "application/json", Accept: "application/json" },
+  }).then((res) => res.json());
 
-  const index = mapCursorToMax(STATE.cursor, playlist.length);
-  const work = playlist[index];
+const init = async () => {
+  const { data, errors } = await request();
 
-  FRAME.src = work.url;
-  document.title = work.title;
+  if (errors) {
+    throw errors[0];
+  }
 
-  setTimeout(init, work.duration * 1000);
+  const {
+    mistral: {
+      content: [{ link }],
+    },
+  } = data;
+
+  FRAME.src = link.url;
+  document.title = link.name;
+
+  setTimeout(init, PARAMS.interval);
 };
 
 init();

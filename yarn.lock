@@ -3117,11 +3117,6 @@ map-cache@^0.2.2:
   resolved "https://registry.yarnpkg.com/map-cache/-/map-cache-0.2.2.tgz#c32abd0bd6525d9b051645bb4f26ac5dc98a0dbf"
   integrity sha1-wyq9C9ZSXZsFFkW7TyasXcmKDb8=
 
-map-cursor-to-max@^1.0.0:
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/map-cursor-to-max/-/map-cursor-to-max-1.0.0.tgz#d46fbab9429094ae586d5995f0a1d06dd3999f15"
-  integrity sha512-BBuyrvO7X3eyQGC9GJKeNeGUnF/69OAjfI4OfroIQF0CqC3cf/vnmGJyxb2oWjwasC3eEtW4JGaO/XcArp03ig==
-
 map-visit@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/map-visit/-/map-visit-1.0.0.tgz#ecdca8f13144e660f1b5bd41f12f3479d98dfb8f"
@@ -4109,10 +4104,22 @@ q@^1.1.2:
   resolved "https://registry.yarnpkg.com/q/-/q-1.5.1.tgz#7e32f75b41381291d04611f1bf14109ac00651d7"
   integrity sha1-fjL3W0E4EpHQRhHxvxQQmsAGUdc=
 
+qs@^6.9.4:
+  version "6.9.4"
+  resolved "https://registry.yarnpkg.com/qs/-/qs-6.9.4.tgz#9090b290d1f91728d3c22e54843ca44aea5ab687"
+  integrity sha512-A1kFqHekCTM7cz0udomYUoYNWjBebHm/5wzU/XqrBRBNWectVH0QIiN+NEcZ0Dte5hvzHwbr8+XQmguPhJ6WdQ==
+
 qs@~6.5.2:
   version "6.5.2"
   resolved "https://registry.yarnpkg.com/qs/-/qs-6.5.2.tgz#cb3ae806e8740444584ef154ce8ee98d403f3e36"
   integrity sha512-N5ZAX4/LxJmF+7wN74pUD6qAh9/wnvdQcjq9TZjevvXzSUo7bfmw91saqMjzGS2xq91/odN2dW/WOl7qQHNDGA==
+
+queryparams@^1.0.52:
+  version "1.0.52"
+  resolved "https://registry.yarnpkg.com/queryparams/-/queryparams-1.0.52.tgz#2bf6b80540e0514ee41aa0c0c1cadb4d57e7a353"
+  integrity sha512-Q9EJIRSj7X7XHyWf/QApIIOI8mko34pyfvewMBbxtuDrun3wGqQIsTftmkjZCVRqGltUy/zIz3siw2ci0TpGJw==
+  dependencies:
+    qs "^6.9.4"
 
 querystring-es3@^0.2.0:
   version "0.2.1"
