@@ -1,7 +1,15 @@
-import { PARAMS, request } from "./index";
+import { configure } from "queryparams";
+import { request, QUERIES } from "./index";
 
 const init = async () => {
-  const { data, errors } = await request();
+  const script = <HTMLScriptElement>document.getElementById("kiosk");
+  const search = script.src.replace(/^[^\?]+\??/, "");
+
+  const {
+    params: { interval },
+  } = configure({ interval: 1800000 }, search);
+
+  const { data, errors } = await request(QUERIES.display);
 
   if (errors) {
     throw errors[0];
@@ -14,7 +22,7 @@ const init = async () => {
 
   setTimeout(() => {
     window.location.assign(link.url);
-  }, PARAMS.interval);
+  }, interval);
 };
 
 init();

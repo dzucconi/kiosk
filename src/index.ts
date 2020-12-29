@@ -6,7 +6,7 @@ export const { params: PARAMS } = configure<{
   mode: "display" | "overview";
 }>({
   id: "49ee7cb3-a05a-463b-9ebb-5c1b59787d1b",
-  interval: 10000,
+  interval: 1800000,
   mode: "display",
 });
 
@@ -16,7 +16,7 @@ const DOM = {
 };
 
 const ENDPOINT = `https://atlas.auspic.es/graph/${PARAMS.id}`;
-const QUERIES: { [K in typeof PARAMS.mode]: string } = {
+export const QUERIES: { [K in typeof PARAMS.mode]: string } = {
   overview: `{
     collection: object {
       ... on Collection {
@@ -47,15 +47,15 @@ const QUERIES: { [K in typeof PARAMS.mode]: string } = {
   }`,
 };
 
-export const request = () =>
+export const request = (query: string) =>
   fetch(ENDPOINT, {
     method: "POST",
-    body: JSON.stringify({ query: QUERIES[PARAMS.mode] }),
+    body: JSON.stringify({ query }),
     headers: { "Content-Type": "application/json", Accept: "application/json" },
   }).then((res) => res.json());
 
 const init = async () => {
-  const { data, errors } = await request();
+  const { data, errors } = await request(QUERIES[PARAMS.mode]);
 
   if (errors) {
     throw errors[0];
