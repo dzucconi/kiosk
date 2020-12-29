@@ -13,10 +13,28 @@
         left: 0;
         border: 0;
       }
+
+      a {
+        display: block;
+        padding: 1rem;
+        color: black;
+        word-break: break-all;
+      }
+
+      a:hover {
+        text-decoration: none;
+      }
+
+      a:visited {
+        color: gray;
+      }
     </style>
   </head>
   <body>
-    <iframe id="frame" width="100%" height="100%"></iframe>
+    <div id="root">
+      <iframe id="frame" width="100%" height="100%"></iframe>
+    </div>
+
     <script src="./index.ts"></script>
   </body>
 </html>

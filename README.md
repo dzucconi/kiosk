@@ -13,7 +13,8 @@
 
 ## Parameters
 
-| Param      | Description                            | Type     | Default                                  |
-| ---------- | -------------------------------------- | -------- | ---------------------------------------- |
-| `id`       | Auspic.es collection ID                | `string` | `"49ee7cb3-a05a-463b-9ebb-5c1b59787d1b"` |
-| `interval` | Time in milliseconds between refreshes | `number` | `900000` (15 minutes)                    |
+| Param      | Description                                                   | Type                      | Default                                  |
+| ---------- | ------------------------------------------------------------- | ------------------------- | ---------------------------------------- |
+| `id`       | Auspic.es collection ID                                       | `string`                  | `"49ee7cb3-a05a-463b-9ebb-5c1b59787d1b"` |
+| `interval` | Time in milliseconds between refreshes                        | `number`                  | `900000` (15 minutes)                    |
+| `mode`     | Either display iframed content or the list of available links | `"display" \| "overview"` | `"display"`                              |
