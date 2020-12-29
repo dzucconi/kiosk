@@ -1,6 +1,6 @@
 import { configure } from "queryparams";
 
-const { params: PARAMS } = configure<{
+export const { params: PARAMS } = configure<{
   id: string;
   interval: number;
   mode: "display" | "overview";
@@ -47,7 +47,7 @@ const QUERIES: { [K in typeof PARAMS.mode]: string } = {
   }`,
 };
 
-const request = () =>
+export const request = () =>
   fetch(ENDPOINT, {
     method: "POST",
     body: JSON.stringify({ query: QUERIES[PARAMS.mode] }),
