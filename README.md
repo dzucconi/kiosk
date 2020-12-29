@@ -1,5 +1,7 @@
 # Kiosk
 
+[![Netlify Status](https://api.netlify.com/api/v1/badges/f1cbb54d-787a-4d2f-a2bf-4eeb4371e0fa/deploy-status)](https://app.netlify.com/sites/damonzucconi-kiosk/deploys)
+
 ## Meta
 
 - **State**: production
