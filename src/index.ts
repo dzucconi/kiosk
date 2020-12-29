@@ -15,7 +15,6 @@ const DOM = {
   frame: <HTMLIFrameElement>document.getElementById("frame"),
 };
 
-const ENDPOINT = `https://atlas.auspic.es/graph/${PARAMS.id}`;
 export const QUERIES: { [K in typeof PARAMS.mode]: string } = {
   overview: `{
     collection: object {
@@ -47,15 +46,15 @@ export const QUERIES: { [K in typeof PARAMS.mode]: string } = {
   }`,
 };
 
-export const request = (query: string) =>
-  fetch(ENDPOINT, {
+export const request = (id: string, query: string) =>
+  fetch(`https://atlas.auspic.es/graph/${id}`, {
     method: "POST",
     body: JSON.stringify({ query }),
     headers: { "Content-Type": "application/json", Accept: "application/json" },
   }).then((res) => res.json());
 
 const init = async () => {
-  const { data, errors } = await request(QUERIES[PARAMS.mode]);
+  const { data, errors } = await request(PARAMS.id, QUERIES[PARAMS.mode]);
 
   if (errors) {
     throw errors[0];

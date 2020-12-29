@@ -6,10 +6,13 @@ const init = async () => {
   const search = script.src.replace(/^[^\?]+\??/, "");
 
   const {
-    params: { interval },
-  } = configure({ interval: 1800000 }, search);
+    params: { id, interval },
+  } = configure(
+    { id: "49ee7cb3-a05a-463b-9ebb-5c1b59787d1b", interval: 1800000 },
+    search
+  );
 
-  const { data, errors } = await request(QUERIES.display);
+  const { data, errors } = await request(id, QUERIES.display);
 
   if (errors) {
     throw errors[0];
