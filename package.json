@@ -7,10 +7,10 @@
     "build-script": "parcel build src/script.ts --no-content-hash"
   },
   "devDependencies": {
-    "parcel": "^1.12.4",
-    "typescript": "^4.1.3"
+    "parcel": "1.12.4",
+    "typescript": "4.1.3"
   },
   "dependencies": {
-    "queryparams": "^1.1.0"
+    "queryparams": "1.1.0"
   }
 }
