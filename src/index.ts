@@ -4,10 +4,12 @@ export const { params: PARAMS } = configure<{
   id: string;
   interval: number;
   mode: "display" | "overview";
+  hideCursor: boolean;
 }>({
   id: "49ee7cb3-a05a-463b-9ebb-5c1b59787d1b",
   interval: 1800000,
   mode: "display",
+  hideCursor: true,
 });
 
 const DOM = {
@@ -70,6 +72,22 @@ const init = async () => {
 
       DOM.frame.src = link.url;
       document.title = link.name;
+
+      if (PARAMS.hideCursor) {
+        DOM.root.appendChild(
+          new DOMParser().parseFromString(
+            `<div style="
+              position: fixed;
+              top: 0;
+              bottom: 0;
+              right: 0;
+              left: 0;
+              cursor: none;
+            "></div>`,
+            "text/html"
+          ).body.firstChild
+        );
+      }
 
       setTimeout(init, PARAMS.interval);
       break;
