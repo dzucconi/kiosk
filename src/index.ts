@@ -1,4 +1,5 @@
 import { configure } from "queryparams";
+import screenfull, { Screenfull } from "screenfull";
 
 export const { params: PARAMS } = configure<{
   id: string;
@@ -88,6 +89,12 @@ const init = async () => {
           ).body.firstChild
         );
       }
+
+      document.addEventListener("click", () => {
+        if (screenfull.isEnabled) {
+          screenfull.request();
+        }
+      });
 
       setTimeout(init, PARAMS.interval);
       break;
